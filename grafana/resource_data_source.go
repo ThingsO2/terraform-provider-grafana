@@ -68,6 +68,12 @@ source selected (via the 'type' argument).
 				Default:     false,
 				Description: "Whether to set the data source as default. This should only be `true` to a single data source.",
 			},
+			"org_id": {
+				Type:        schema.TypeInt,
+				Optional:    true,
+				Default:     1,
+				Description: "Organization id to which the datasource belongs.",
+			},
 			"json_data": {
 				Type:        schema.TypeList,
 				Optional:    true,
@@ -435,6 +441,7 @@ func ReadDataSource(ctx context.Context, d *schema.ResourceData, meta interface{
 	d.Set("access_mode", dataSource.Access)
 	d.Set("database_name", dataSource.Database)
 	d.Set("is_default", dataSource.IsDefault)
+	d.Set("org_id", int(dataSource.OrgID))
 	d.Set("name", dataSource.Name)
 	d.Set("type", dataSource.Type)
 	d.Set("url", dataSource.URL)
@@ -484,6 +491,7 @@ func makeDataSource(d *schema.ResourceData) (*gapi.DataSource, error) {
 		User:              d.Get("username").(string),
 		Password:          d.Get("password").(string),
 		IsDefault:         d.Get("is_default").(bool),
+		OrgID:             int64(d.Get("org_id").(int)),
 		BasicAuth:         d.Get("basic_auth_enabled").(bool),
 		BasicAuthUser:     d.Get("basic_auth_username").(string),
 		BasicAuthPassword: d.Get("basic_auth_password").(string),

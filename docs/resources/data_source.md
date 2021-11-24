@@ -91,6 +91,7 @@ resource "grafana_data_source" "stackdriver" {
 - **id** (String) The ID of this resource.
 - **is_default** (Boolean) Whether to set the data source as default. This should only be `true` to a single data source. Defaults to `false`.
 - **json_data** (Block List) (Required by some data source types) (see [below for nested schema](#nestedblock--json_data))
+- **org_id** (Number) Organization id to which the datasource belongs. Defaults to `1`.
 - **password** (String, Sensitive) (Required by some data source types) The password to use to authenticate to the data source. Defaults to ``.
 - **secure_json_data** (Block List) (see [below for nested schema](#nestedblock--secure_json_data))
 - **url** (String) The URL for the data source. The type of URL required varies depending on the chosen data source type.

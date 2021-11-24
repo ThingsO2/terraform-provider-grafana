@@ -26,12 +26,13 @@ var resourceTests = []struct {
 resource "grafana_data_source" "testdata" {
 	type                = "testdata"
 	name                = "testdata"
-	access_mode					= "direct"
+	access_mode			= "direct"
 	basic_auth_enabled  = true
 	basic_auth_password = "ba_password"
 	basic_auth_username = "ba_username"
 	database_name       = "db_name"
-	is_default					= true
+	is_default			= true
+	org_id				= 1
 	url                 = "http://acc-test.invalid/"
 	username            = "user"
 	password            = "pass"
@@ -46,6 +47,7 @@ resource "grafana_data_source" "testdata" {
 			"basic_auth_username": "ba_username",
 			"database_name":       "db_name",
 			"is_default":          "true",
+			"org_id":              "1",
 			"url":                 "http://acc-test.invalid/",
 			"username":            "user",
 			"password":            "pass",
